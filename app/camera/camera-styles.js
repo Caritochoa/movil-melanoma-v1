@@ -13,10 +13,15 @@ export const cameraStyles = StyleSheet.create({
     marginBottom: 10,
   },
   camera: {
-    width: '100%',
+    width: '95%',
     height: 400,
     marginBottom: 20,
+    borderRadius: 20,
+    overflow: 'hidden',
+    borderWidth: 3,
+    borderColor: '#dbe4ee'
   },
+  
   preview: {
     alignItems: 'center',
     marginTop: 20,

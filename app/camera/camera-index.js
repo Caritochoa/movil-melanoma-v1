@@ -49,10 +49,7 @@ export default function CameraScreen() {
 
   return (
     <View style={cameraStyles.container}>
-      <Text style={cameraStyles.title}>
-        Cámara
-      </Text>
-
+      
       <CameraView
         ref={cameraRef}
         style={cameraStyles.camera}
