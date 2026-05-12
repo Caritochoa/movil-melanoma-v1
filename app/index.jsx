@@ -118,23 +118,22 @@ const styles = StyleSheet.create({
   },
 
   buttonWrapper: {
-  width: '100%',
-  marginTop: 30,
-},
+    width: '100%',
+    marginTop: 30,
+  },
 
-button: {
-  height: 72,
-  borderRadius: 999,
-  justifyContent: 'center',
+  button: {
+    height: 72,
+    borderRadius: 999,
+    justifyContent: 'center',
 
-  shadowColor: '#4F6BFF',
-  shadowOffset: {
-    width: 0,
-    height: 10,
+    shadowColor: '#4F6BFF',
+    shadowOffset: {
+      width: 0,
+      height: 10,
   },
   shadowOpacity: 0.25,
   shadowRadius: 20,
-
   elevation: 10,
 },
 
@@ -146,9 +145,9 @@ button: {
   },
 
   buttonText: {
-  color: '#FFFFFF',
-  fontSize: 26,
-  letterSpacing: -0.5,
+    color: '#FFFFFF',
+    fontSize: 26,
+    letterSpacing: -0.5,
   },
 
   buttonTextBold: {
