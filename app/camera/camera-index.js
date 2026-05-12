@@ -1,11 +1,12 @@
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useRouter } from 'expo-router';
-import { useRef, useState } from 'react';
-import { Button, Image, Text, View } from 'react-native';
+import { useRef } from 'react';
+import { Button, Text, View } from 'react-native';
+
+import { cameraStyles } from './camera-styles';
 
 export default function CameraScreen() {
   const cameraRef = useRef(null);
-  const [image, setImage] = useState(null);
   const [permission, requestPermission] = useCameraPermissions();
   const router = useRouter();
 
@@ -15,9 +16,13 @@ export default function CameraScreen() {
 
   if (!permission.granted) {
     return (
-      <View style={cameracameraStyles.container}>
+      <View style={cameraStyles.container}>
         <Text>Necesitamos permiso para usar la cámara</Text>
-        <Button title="Dar permiso" onPress={requestPermission} />
+
+        <Button
+          title="Dar permiso"
+          onPress={requestPermission}
+        />
       </View>
     );
   }
@@ -28,37 +33,35 @@ export default function CameraScreen() {
         base64: true,
       });
 
-      console.log("📸 Foto tomada:", photo);
-      setImage(photo.uri);
+      console.log('📸 Foto tomada:', photo);
+
+      router.push({
+        pathname: '/preview/preview',
+        params: {
+          imageUri: photo.uri,
+        },
+      });
 
       // Aquí luego conectamos backend
       // sendImageToBackend(photo.base64);
     }
   };
 
-  const goToResults = () => {
-    router.push('/results');
-  };
-
   return (
     <View style={cameraStyles.container}>
-      <Text style={cameraStyles.title}>Cámara</Text>
+      <Text style={cameraStyles.title}>
+        Cámara
+      </Text>
 
       <CameraView
         ref={cameraRef}
         style={cameraStyles.camera}
       />
 
-      <Button title="Tomar foto" onPress={capture} />
-
-      {image && (
-        <View style={cameraStyles.preview}>
-          <Text>Foto capturada:</Text>
-          <Image source={{ uri: image }} style={cameraStyles.image} />
-        </View>
-      )}
-
-      <Button title="Ver resultados" onPress={goToResults} />
+      <Button
+        title="Tomar foto"
+        onPress={capture}
+      />
     </View>
   );
 }

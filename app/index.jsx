@@ -7,6 +7,8 @@ import {
   View
 } from 'react-native';
 
+import Header from './components/header/Header';
+
 
 export default function Home() {
   const router = useRouter();
@@ -17,9 +19,12 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+
+        <Header />
       
       <Image
         source={require('../assets/images/logo-square.png')}
+        //source={require('../assets/images/logo-square.png')}
         style={styles.logo}
         resizeMode="contain"
       />
