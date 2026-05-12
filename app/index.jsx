@@ -7,6 +7,8 @@ import {
   View
 } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
+import { ArrowRight } from 'lucide-react-native';
 import Header from './components/header/Header';
 
 
@@ -44,13 +46,33 @@ export default function Home() {
       </View>
 
       {/* Botón */}
-      <TouchableOpacity 
-        style={styles.button} 
+      <TouchableOpacity
         onPress={handleButtonClick}
-        activeOpacity={0.8}
+        activeOpacity={0.9}
+        style={styles.buttonWrapper}
       >
-        <Text style={styles.buttonText}>Start Scan</Text>
-      </TouchableOpacity>
+      <LinearGradient
+        colors={['#007BFF', '#6A00FF']}
+        locations={[0.15, 1]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.button}
+      >
+    <View style={styles.buttonContent}>
+      <ArrowRight
+        color="white"
+        size={28}
+        strokeWidth={2}
+      />
+
+      <Text style={styles.buttonText}>
+        <Text style={styles.buttonTextBold}>Start </Text>
+        <Text style={styles.buttonTextLight}>Scan</Text>
+      </Text>
+    
+    </View>
+  </LinearGradient>
+</TouchableOpacity>
 
       
     </View>
@@ -95,24 +117,45 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
 
-  button: {
-  backgroundColor: '#0A84FF',
-  paddingVertical: 16,
-  borderRadius: 12,
-  alignItems: 'center',
-  width: '100%', // 👈 clave para ancho completo
-  marginTop: 20,
+  buttonWrapper: {
+  width: '100%',
+  marginTop: 30,
 },
 
-buttonText: {
-  color: '#fff',
-  fontSize: 16,
-  fontWeight: '600',
+button: {
+  height: 72,
+  borderRadius: 999,
+  justifyContent: 'center',
+
+  shadowColor: '#4F6BFF',
+  shadowOffset: {
+    width: 0,
+    height: 10,
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 20,
+
+  elevation: 10,
 },
+
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 14,
+  },
 
   buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
+  color: '#FFFFFF',
+  fontSize: 26,
+  letterSpacing: -0.5,
+  },
+
+  buttonTextBold: {
+    fontFamily: 'PoppinsSemiBold',
+  },
+
+  buttonTextLight: {
+    fontFamily: 'PoppinsLight',
   },
 });
